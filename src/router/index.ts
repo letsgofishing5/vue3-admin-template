@@ -1,10 +1,10 @@
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHashHistory, createWebHistory } from "vue-router"
 import { ConstantRoutes, NotFoundRoutes } from "./modules/constantRoutes"
 import NProgress from "nprogress";
 import { useUserStore } from "@/store/user";
 import { initDynamicRoutes } from "./utils";
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes: [
         ...ConstantRoutes,
         ...NotFoundRoutes
