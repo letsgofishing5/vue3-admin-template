@@ -27,6 +27,6 @@ if  ! git diff --quiet --exit-code; then
 fi
 
 echo "=== Git Push ==="
-git push origin  ${3:-'vite-v3-ts-admin-template'} 
+git push origin  ${3:-'master'} 
 
 echo "=== Script Finished ==="
