@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-c27b6911.js";import{j as s,o as t,x as c}from"./.pnpm-de04094d.js";const o="/assets/404-ccd913e2.jpg",r={},_={class:"flex items-center justify-center w-full h-full"},n=c("img",{src:o,alt:""},null,-1),a=[n];function l(i,f){return t(),s("div",_,a)}const p=e(r,[["render",l]]);export{p as default};
