@@ -1,0 +1,44 @@
+html,
+body,
+#app {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+/* transition */
+.fade-transition-enter-active,
+.fade-transition-leave-active {
+    transition: opacity 0.2s ease-in-out;
+}
+
+.fade-transition-enter-from,
+.fade-transition-leave-to {
+    opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+/* fade-slide */
+.fade-slide-leave-active,
+.fade-slide-enter-active {
+    transition: all 0.3s;
+}
+
+.fade-slide-enter-from {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.fade-slide-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}

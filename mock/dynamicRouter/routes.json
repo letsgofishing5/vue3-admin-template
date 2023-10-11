@@ -1,0 +1,56 @@
+[
+    {
+        "path": "/dashboard",
+        "name": "Dashboard",
+        "component": "/src/views/dashboard/index.vue",
+        "meta": {
+            "title": "首页",
+            "isTab": true
+        }
+    },
+    {
+        "path": "/demo",
+        "name": "Demo",
+        "meta": {
+            "title": "demo管理"
+        },
+        "children": [
+            {
+                "path": "/demo/demo01",
+                "name": "Demo01",
+                "component": "/src/views/demo/demo01.vue",
+                "meta": {
+                    "title": "表格",
+                    "isTab": true
+                }
+            },
+            {
+                "path": "/demo/demo02",
+                "name": "Demo02",
+                "component": "/src/views/demo/demo02.vue",
+                "meta": {
+                    "title": "分页",
+                    "isTab": true
+                }
+            },
+            {
+                "path": "/demo/demo03",
+                "name": "Demo03",
+                "component": "/src/views/demo/demo03.vue",
+                "meta": {
+                    "title": "表单",
+                    "isTab": true
+                }
+            },
+            {
+                "path": "/demo/demo04",
+                "name": "Demo04",
+                "component": "/src/views/demo/demo04.vue",
+                "meta": {
+                    "title": "功能表单",
+                    "isTab": true
+                }
+            }
+        ]
+    }
+]
