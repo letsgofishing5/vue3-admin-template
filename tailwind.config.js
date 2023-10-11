@@ -4,6 +4,9 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx,vue}",
   ],
+  corePlugins: {
+    preflight: false
+  },
   theme: {
     screens: {
       'xs': { 'min': '0px', 'max': '599px' },

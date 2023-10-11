@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-c27b6911.js";import{j as t,o as s,x as c}from"./.pnpm-de04094d.js";const o="/vue3-admin-template/assets/404-ccd913e2.jpg",n={},r={class:"flex items-center justify-center w-full h-full"},_=c("img",{src:o,alt:""},null,-1),a=[_];function l(i,f){return s(),t("div",r,a)}const p=e(n,[["render",l]]);export{p as default};
