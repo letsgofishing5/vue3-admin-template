@@ -1,1 +1,0 @@
-import{_ as o}from"./LoginForm.vue_vue_type_script_setup_true_lang-28e7fec4.js";import"./.pnpm-de04094d.js";import"./index-7c0c9df7.js";import"./BasicForm.vue_vue_type_script_setup_true_lang-749418c9.js";export{o as default};

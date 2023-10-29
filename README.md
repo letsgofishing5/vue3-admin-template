@@ -4,6 +4,8 @@
 
 项目预览地址：https://lets-go-fishing.gitee.io/vue3-admin-template
 
+优化避坑：https://mp.weixin.qq.com/s/Fjn56_NEaT3Dya_JoKECow
+
 ## 页面效果展示
 
 ![image-20231011102712424](./mock/playImg/login.png)![image-20231011102712424](./mock/playImg/dashboard.png)![image-20231011102712424](./mock/playImg/table.png)![image-20231011102712424](./mock/playImg/form.png)

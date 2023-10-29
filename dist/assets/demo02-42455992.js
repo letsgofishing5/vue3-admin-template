@@ -1,0 +1,1 @@
+import{_ as a}from"./PaginationComponent.vue_vue_type_script_setup_true_lang-41cbeb81.js";import{d as o,o as t,j as n,b as r,u as s}from"./vendor-9004f6b8.js";const f=o({__name:"demo02",setup(c){const e={page:1,pageSize:15,total:100};return(p,_)=>(t(),n("div",null,[r(s(a),{pagination:e})]))}});export{f as default};
