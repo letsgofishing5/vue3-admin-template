@@ -1,2 +1,2 @@
 export { default as Pagination } from "./src/PaginationComponent.vue"
-export type { PaginationProp } from "./src/models"
+export type { PaginationProp } from "./src/types"
