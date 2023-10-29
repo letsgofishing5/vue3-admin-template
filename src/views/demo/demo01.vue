@@ -151,7 +151,6 @@ async function getTableData1() {
     listQuery1.value,
     loading
   );
-  console.log("res:", res);
   tableData1.splice(0, 15, ...(res.data || []));
   total1.value = res.count;
 }
