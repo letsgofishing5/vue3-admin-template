@@ -57,8 +57,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { BasicTable } from "@/components/Table";
-import { TableColumnProp } from "@/components/Table";
+import BasicTable, { TableColumnProp } from "@/components/table";
 import { getDemoUserList1, getDemoUserList2 } from "@/api/demo";
 import { DemoUserModel } from "#/demo/user";
 import { reactive, ref } from "vue";

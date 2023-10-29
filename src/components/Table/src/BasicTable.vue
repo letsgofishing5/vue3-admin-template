@@ -29,7 +29,7 @@
 
 <script lang="ts" setup>
 import { Pagination, PaginationProp } from "@/components/pagination";
-import { TableColumnProp } from "@/components/Table";
+import { TableColumnProp } from "@/components/table";
 interface Props {
   columns: TableColumnProp[];
   data?: any[];
