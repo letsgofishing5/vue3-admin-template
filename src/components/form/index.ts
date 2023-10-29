@@ -1,4 +1,3 @@
-import BasicForm from "./src/BasicForm.vue";
-export default BasicForm
-export { default as BasicForm } from "./s./src/types.vue";
-export type { BasicFormItemProps } from "./src/types"
+import SearchForm from "./src/SearchForm.vue";
+export default SearchForm
+export type { BasicFormItemProps } from "./src"

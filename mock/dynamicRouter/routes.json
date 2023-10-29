@@ -38,16 +38,16 @@
                 "name": "Demo03",
                 "component": "/src/views/demo/demo03.vue",
                 "meta": {
-                    "title": "表单",
+                    "title": "表单常用配置",
                     "isTab": true
                 }
             },
             {
-                "path": "/demo/demo04",
-                "name": "Demo04",
-                "component": "/src/views/demo/demo04.vue",
+                "path": "/demo/searchForm",
+                "name": "searchForm",
+                "component": "/src/views/demo/search-form.vue",
                 "meta": {
-                    "title": "功能表单",
+                    "title": "搜索表单",
                     "isTab": true
                 }
             }

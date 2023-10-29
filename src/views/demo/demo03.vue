@@ -1,25 +1,29 @@
 <template>
   <div>
     <el-divider content-position="left">基础表单</el-divider>
-    <BasicForm label-width="100" v-model="person" :json-conf="formConf">
+    <SearchForm
+      api=""
+      :inline="false"
+      label-width="100"
+      v-model="person"
+      :formItems="formConf"
+    >
       <el-input v-model="person.phone" label="电话号码"></el-input>
-    </BasicForm>
+    </SearchForm>
     <el-divider content-position="left">多类型表单</el-divider>
-    <BasicForm label-width="100" v-model="multipFormType" :json-conf="formConf2">
+    <SearchForm
+      api=""
+      :inline="false"
+      label-width="100"
+      v-model="multipFormType"
+      :formItems="formConf2"
+    >
       <el-input v-model="person.phone" label="电话号码"></el-input>
-    </BasicForm>
-    <el-divider content-position="left">表单操作</el-divider>
-    <BasicForm label-width="100" v-model="person3" :json-conf="formConf3">
-      <template #5="{ props }">
-        <el-button type="primary" @click="submit(props)">
-          {{ props.label }}
-        </el-button>
-      </template>
-    </BasicForm>
+    </SearchForm>
   </div>
 </template>
 <script setup lang="ts">
-import { BasicForm, BasicFormItemProps } from "@/components/form";
+import SearchForm, { BasicFormItemProps } from "@/components/form";
 import { computed, ref, watch } from "vue";
 // 表单变量对象
 const person = ref({
@@ -57,13 +61,14 @@ const formConf: BasicFormItemProps[] = [
     }),
   },
 ];
+
 // 表单变量对象
 const multipFormType = ref({
   name: "沈建政",
   age: 12,
   address: "河南省濮阳市濮阳县濮阳县子岸镇",
   phone: null,
-  birthday: null,
+  birthday: "2023-10-29",
   marry: null,
   adut: null,
   select: null,

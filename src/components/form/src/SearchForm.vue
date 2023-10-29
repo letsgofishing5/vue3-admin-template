@@ -1,14 +1,14 @@
 <template>
   <!-- 
     先处理简单的数据类型
-    1. 能数据双向绑定
+    1. 复杂search Item 可以插槽使用，常用的则可以通过 el 设置
     2. 能动态关联
     3. 插槽也能动态关联
     6. 可以高度自定义定制化
       1. 接入常用的表单元素
    -->
-  <el-form ref="formRef" v-bind="$attrs" :model="formModel">
-    <template v-for="(formItem, formItemIdx) in jsonConf" :key="formItemIdx">
+  <el-form ref="formRef" v-bind="$attrs" :model="formModel" :inline="inline">
+    <template v-for="(formItem, formItemIdx) in formItems" :key="formItemIdx">
       <!-- 定制化 form-item -->
       <el-form-item
         v-if="formItem.el && setDefaultValue(formItem.display?.value, true)"
@@ -39,29 +39,35 @@
       </el-form-item>
     </template>
     <!-- 表单按钮 -->
-    <div :class="btnsClass" :style="btnsStyle">
-      <slot name="btns" :events="{ reset, submit }"></slot>
-    </div>
+    <el-form-item>
+      <slot name="btns" :events="{ reset, submit }">
+        <el-button type="primary" @click="submit" :loading="loading">
+          查询
+        </el-button>
+        <el-button @click="reset">重置</el-button>
+      </slot>
+    </el-form-item>
   </el-form>
 </template>
 
 <script lang="ts" setup>
 import { BasicFormItemProps } from "@/components/form";
 import { setDefaultValue } from "@/hocks/useFunc";
-import { StyleValue, computed, ref } from "vue";
+import { doGet } from "@/http";
+import { computed, ref } from "vue";
 import { FormInstance } from "element-plus/lib/components/index.js";
 interface Props {
   modelValue: object;
-  jsonConf: BasicFormItemProps[];
-  btnsStyle?: StyleValue | string;
-  btnsClass?: object | string;
+  formItems: BasicFormItemProps[];
+  inline?: boolean;
+  api: string;
 }
 const props = withDefaults(defineProps<Props>(), {
-  jsonConf: () => [],
+  formItems: () => [],
   modelValue: () => {
     return {};
   },
-  btnsClass: "justify-center flex",
+  inline: true,
 });
 
 const emits = defineEmits(["update:modelValue", "loading"]);
@@ -76,19 +82,20 @@ const formModel = computed({
 });
 
 const formRef = ref<FormInstance>();
-
-// 表单校验提交
-function submit(callback?: (params?: any[]) => any) {
+const loading = ref(false);
+// 表单校验并提交提交
+function submit() {
   if (!formRef.value) return false;
   formRef.value.validate(async (valid) => {
     if (valid) {
-      callback?.();
+      const result = await doGet({ url: props.api }, loading);
+      console.log(result);
     } else {
       return false;
     }
   });
 }
-// 清空
+// 重置表单
 function reset(): void {
   if (!formRef.value) return;
   formRef.value.resetFields();

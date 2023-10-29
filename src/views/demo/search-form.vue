@@ -1,16 +1,17 @@
 <template>
   <div>
     <el-divider content-position="left">表单操作</el-divider>
-    <BasicForm label-width="100" v-model="person" :json-conf="formConf">
-      <template #btns="{ events }">
-        <el-button @click="submit(events)" type="primary">提交</el-button>
-        <el-button @click="events.reset()">重置</el-button>
-      </template>
-    </BasicForm>
+    <search-form
+      label-width="100"
+      v-model="person"
+      :formItems="formConf"
+      api="http://www.baidu.com"
+    >
+    </search-form>
   </div>
 </template>
 <script setup lang="ts">
-import { BasicForm, BasicFormItemProps } from "@/components/form";
+import { BasicFormItemProps, SearchForm } from "@/components/form";
 import { ref } from "vue";
 // 表单变量对象
 const person = ref({
@@ -35,8 +36,5 @@ const formConf: BasicFormItemProps[] = [
     prop: "address",
   },
 ];
-function submit(val) {
-  console.log("----", val);
-}
 </script>
 <style scoped></style>

@@ -1,31 +1,47 @@
 <template>
-  <BasicForm :json-conf="formConf" v-model="loginUser">
-    <template #password="{ props, events }">
+  <el-form ref="formRef" :model="loginUser" :rules="rules">
+    <el-form-item prop="username">
       <el-input
-        @keyup.enter="events.submit(submitForm)"
-        v-bind="props"
-        v-model="loginUser.password"
+        placeholer="请输入账号"
+        autocomplete="off"
+        prefixIcon="user"
+        @keyup.enter="submitForm"
+        v-model="loginUser.username"
       />
-    </template>
-    <template #btns="{ events }">
+    </el-form-item>
+    <el-form-item prop="password">
+      <el-input
+        placeholer="请输入密码"
+        autocomplete="off"
+        type="password"
+        prefixIcon="lock"
+        showPassword
+        @keyup.enter="submitForm"
+        v-model="loginUser.password"
+        clearable
+      />
+    </el-form-item>
+    <el-form-item>
       <el-button
         class="w-full"
+        :loading="loading"
         type="primary"
-        @click="events.submit(submitForm)"
-        >登录</el-button
+        @click="submitForm()"
       >
-    </template>
-  </BasicForm>
+        登录
+      </el-button>
+    </el-form-item>
+  </el-form>
 </template>
 
 <script lang="ts" setup>
 import { login, LoginUser, UserModel } from "@/api/common";
-import { BasicForm } from "@/components/form";
+import { Validate } from "@/hocks/useForm";
 import { notify } from "@/hocks/useMessage";
 import { useUserStore } from "@/store/user";
-import { reactive } from "vue";
+import { FormInstance, FormRules } from "element-plus/lib/components/index.js";
+import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
-import { formConf } from "./index";
 
 const loginUser = reactive<LoginUser>({
   username: "admin",
@@ -33,8 +49,31 @@ const loginUser = reactive<LoginUser>({
 });
 
 const router = useRouter();
+
+function validatePass(_rule: any, value: any, callback: any) {
+  if (value === "") {
+    callback(new Error("请输入密码"));
+  } else {
+    callback();
+  }
+}
+function validateAccount(_rule: any, value: any, callback: any) {
+  if (value === "") {
+    callback(new Error("请输入账号"));
+  } else {
+    callback();
+  }
+}
+const rules = reactive<FormRules<typeof loginUser>>({
+  username: [{ validator: validateAccount, trigger: ["blur"] }],
+  password: [{ validator: validatePass, trigger: ["blur"] }],
+});
+const formRef = ref<FormInstance>();
+const loading = ref(false);
 async function submitForm() {
-  const { code, data } = await login<UserModel>(loginUser);
+  const result = await Validate(formRef);
+  if (!result) return;
+  const { code, data } = await login<UserModel>(loginUser, loading);
   if (code === 200) {
     saveUserInfo(data);
     notify.Succ(`登录成功，${data.username} 欢迎回来`);
