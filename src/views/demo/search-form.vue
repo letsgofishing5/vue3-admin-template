@@ -11,7 +11,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { BasicFormItemProps, SearchForm } from "@/components/form";
+import SearchForm, { BasicFormItemProps } from "@/components/form";
 import { ref } from "vue";
 // 表单变量对象
 const person = ref({
