@@ -6,11 +6,7 @@
         <!-- 自定义插槽列 -->
         <el-table-column v-if="col.type === 'slot'" v-bind="col">
           <template #default="scope">
-            <slot
-              :name="col.slotName || 'default'"
-              :scope="scope"
-              :row="scope.row"
-            >
+            <slot :name="col.slotName || 'default'" :scope="scope" :row="scope.row">
             </slot>
           </template>
         </el-table-column>
@@ -18,18 +14,14 @@
         <el-table-column v-bind="col" v-else />
       </template>
     </el-table>
-    <Pagination
-      :pagination="pagination"
-      class="mt-2"
-      @handlePageChange="emits('handlePageChange', $event)"
-      @handlePageSizeChange="emits('handlePageSizeChange', $event)"
-    ></Pagination>
+    <Pagination :pagination="pagination" class="mt-2" @handlePageChange="emits('handlePageChange', $event)"
+      @handlePageSizeChange="emits('handlePageSizeChange', $event)"></Pagination>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { Pagination, PaginationProp } from "@/components/pagination";
-import { TableColumnProp } from "@/components/table";
+import type { TableColumnProp } from "@/components/Table";
 interface Props {
   columns: TableColumnProp[];
   data?: any[];

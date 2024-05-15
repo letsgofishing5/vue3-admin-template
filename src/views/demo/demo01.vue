@@ -4,18 +4,11 @@
     <div class="flex justify-end">
       <el-button @click="getTableData1" type="primary">查询</el-button>
     </div>
-    <BasicTable
-      :columns="columns"
-      :data="tableData1"
-      border
-      :pagination="{
+    <BasicTable :columns="columns" :data="tableData1" border :pagination="{
         page: listQuery1.page,
         pageSize: listQuery1.pageSize,
         total: total1,
-      }"
-      @handle-page-change="onPageChange(1, $event)"
-      @handle-page-size-change="onPageSizeChange(1, $event)"
-    >
+      }" @handle-page-change="onPageChange(1, $event)" @handle-page-size-change="onPageSizeChange(1, $event)">
       <template #="{ scope }">
         <el-button icon="Edit" size="small" @click="getInfo(scope)" link />
         <el-button icon="Share" size="small" link />
@@ -26,27 +19,14 @@
     <div class="flex justify-end">
       <el-button @click="getTableData2" type="primary">查询</el-button>
     </div>
-    <BasicTable
-      :columns="columns2"
-      :data="tableData2"
-      border
-      @selection-change="selectAll"
-      :pagination="{
+    <BasicTable :columns="columns2" :data="tableData2" border @selection-change="selectAll" :pagination="{
         page: listQuery2.page,
         pageSize: listQuery2.pageSize,
         total: total1,
-      }"
-      @handle-page-change="onPageChange(2, $event)"
-      @handle-page-size-change="onPageSizeChange(2, $event)"
-    >
+      }" @handle-page-change="onPageChange(2, $event)" @handle-page-size-change="onPageSizeChange(2, $event)">
       <template #avator="{ row }">
-        <el-image
-          preview-teleported
-          style="width: 80px; height: 40px"
-          :src="row.avator"
-          fit="contain"
-          :preview-src-list="[row.avator]"
-        />
+        <el-image preview-teleported style="width: 80px; height: 40px" :src="row.avator" fit="contain"
+          :preview-src-list="[row.avator]" />
       </template>
       <template #="{ scope }">
         <el-button icon="Edit" size="small" @click="getInfo(scope)" link />
@@ -57,7 +37,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import BasicTable, { TableColumnProp } from "@/components/table";
+import BasicTable, { type TableColumnProp } from "@/components/Table";
 import { getDemoUserList1, getDemoUserList2 } from "@/api/demo";
 import { DemoUserModel } from "#/demo/user";
 import { reactive, ref } from "vue";
